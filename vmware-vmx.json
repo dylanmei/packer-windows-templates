@@ -1,0 +1,26 @@
+{
+  "builders": [{
+    "type": "vmware-windows-vmx",
+    "source_path": "output-vmware-windows-iso/windows_2012_r2.vmx",
+    "headless": true,
+    "boot_wait": "1m",
+    "winrm_username": "packer",
+    "winrm_password": "packer",
+    "winrm_wait_timeout": "10m",
+    "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+    "vmx_data": {
+        "RemoteDisplay.vnc.enabled": "false",
+        "RemoteDisplay.vnc.port": "5900",
+        "memsize": "2048",
+        "numvcpus": "2",
+        "scsi0.virtualDev": "lsisas1068"
+      }
+    }],
+    "provisioners": [],
+    "post-processors": [{
+      "type": "vagrant",
+      "keep_input_artifact": true,
+      "output": "windows_2012_r2_{{.Provider}}.box",
+      "vagrantfile_template": "vagrantfile.template"
+  }]
+}
