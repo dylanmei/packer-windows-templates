@@ -19,7 +19,7 @@
     "provisioners": [],
     "post-processors": [{
       "type": "vagrant",
-      "keep_input_artifact": true,
+      "keep_input_artifact": false,
       "output": "windows_2012_r2_{{.Provider}}.box",
       "vagrantfile_template": "vagrantfile.template"
   }]

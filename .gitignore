@@ -2,3 +2,4 @@
 /output-*
 *.iso
 *.box
+Vagrantfile

@@ -141,7 +141,7 @@
             </OOBE>
             <UserAccounts>
                 <AdministratorPassword>
-                    <Value>openstack</Value>
+                    <Value>secret</Value>
                     <PlainText>true</PlainText>
                 </AdministratorPassword>
                 <LocalAccounts>
