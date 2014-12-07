@@ -3,8 +3,10 @@
 *.iso
 *.box
 
-vbox-tools.ps1
-vmware-tools.ps1
-
 /.vagrant
 Vagrantfile
+
+# Only check in .example
+Autounattend.xml
+vbox-tools.ps1
+vmware-tools.ps1
