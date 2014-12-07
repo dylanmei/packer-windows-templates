@@ -1,11 +1,11 @@
 packer templates for windows
 ========================
 
-These are example templates to go with [packer-community/packer-windows-plugins](https://github.com/packer-community/packer-windows-plugins). Files ending in `.example` will need to be customized and probably require leg-work on your part (i.e., entering license-keys, downloading vm tools, etc).
+These are example templates to go with [packer-community/packer-windows-plugins](https://github.com/packer-community/packer-windows-plugins). Files ending in `.example` will need to be customized and may even require leg-work on your part (i.e., entering license-keys, downloading vm tools, etc).
 
 ### credits
 
-These examples borrow heavily from [this blog post](http://engineering.daptiv.com/building-a-windows-vagrant-base-box-with-packer/) and these two fine repos:
+These examples borrow heavily from [this blog post](http://engineering.daptiv.com/building-a-windows-vagrant-base-box-with-packer/) and also these two fine repos:
 
 - [joefitzgerald/packer-windows](https://github.com/joefitzgerald/packer-windows)
 - [mwrock/boxstarter](https://github.com/mwrock/boxstarter)
