@@ -5,6 +5,7 @@ param($global:RestartRequired=0,
         $DoneScript='')
 
 $Logfile = "c:\Windows\Temp\win-updates.log"
+$Host.UI.RawUI.WindowTitle = "Run Windows Updates"
 
 function LogWrite {
    Param ([string]$logstring)
@@ -31,17 +32,17 @@ function Check-ContinueRestartOrEnd() {
                 Install-WindowsUpdates
             } elseif ($script:Cycles -gt $global:MaxCycles) {
                 LogWrite "Exceeded Cycle Count - Stopping"
-                Invoke-Expression "$(DoneScript)"
+                Invoke-Expression "$($DoneScript)"
             } else {
                 LogWrite "Done Installing Windows Updates"
-                Invoke-Expression "$(DoneScript)"
+                Invoke-Expression "$($DoneScript)"
             }
         }
         1 {
             $prop = (Get-ItemProperty $RegistryKey).$RegistryEntry
             if (-not $prop) {
                 LogWrite "Restart Registry Entry Does Not Exist - Creating It"
-                Set-ItemProperty -Path $RegistryKey -Name $RegistryEntry -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File $($script:ScriptPath) -MaxUpdatesPerCycle $($MaxUpdatesPerCycle) -DoneScript $(DoneScript)"
+                Set-ItemProperty -Path $RegistryKey -Name $RegistryEntry -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File $($script:ScriptPath) -MaxUpdatesPerCycle $($MaxUpdatesPerCycle) -DoneScript $($DoneScript)"
             } else {
                 LogWrite "Restart Registry Entry Exists Already"
             }
