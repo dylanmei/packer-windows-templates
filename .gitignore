@@ -2,4 +2,9 @@
 /output-*
 *.iso
 *.box
+
+vbox-tools.ps1
+vmware-tools.ps1
+
+/.vagrant
 Vagrantfile

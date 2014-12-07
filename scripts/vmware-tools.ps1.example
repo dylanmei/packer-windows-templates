@@ -1,0 +1,27 @@
+$Host.UI.RawUI.WindowTitle = "Setup VMWare Tools"
+
+# The tools can be found at /Applications/VMware Fusion.app/Contents/Library/isoimages/windows.iso
+# Upload to local http-server, s3-bucket, etc... this script will download and install it.
+
+$ver = "7.0.1"
+$url = "<VMWARE_TOOLS_URL>/vmware_fusion_windows_tools_$ver.iso"
+
+Write-Host "Downloading VMWare Tools..."
+(New-Object System.Net.WebClient).DownloadFile($url, "C:\Windows\Temp\vmware_tools.iso")
+
+Write-Host "Extracting VMWare Tools..."
+& "${env:ProgramFiles}\7-zip\7z.exe" x C:\Windows\Temp\vmware_tools.iso -oC:\Windows\Temp\vmware_tools -aoa | Out-Host
+
+Write-Host "Installing VMWare Tools..."
+$p = Start-Process -Wait -PassThru -FilePath C:\Windows\Temp\vmware_tools\setup.exe -ArgumentList "/S /l C:\Windows\Temp\vmware_tools.log /v""/qn REBOOT=R"""
+
+if ($p.ExitCode -eq 0) {
+  Write-Host "Done."
+} elseif ($p.ExitCode -eq 3010) {
+  Write-Host "Done, but a reboot is necessary."
+} else {
+  Write-Host "VMWare Tools install failed: ExitCode=$($p.ExitCode), Log=C:\Windows\Temp\vmware_tools.log"
+  Start-Sleep 2; exit $p.ExitCode
+}
+
+Start-Sleep 2
