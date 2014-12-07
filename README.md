@@ -5,7 +5,7 @@ These are example templates to go with [packer-community/packer-windows-plugins]
 
 ### credits
 
-These examples borrow heavily [this blog post](http://engineering.daptiv.com/building-a-windows-vagrant-base-box-with-packer/) and these two fine repos:
+These examples borrow heavily from [this blog post](http://engineering.daptiv.com/building-a-windows-vagrant-base-box-with-packer/) and these two fine repos:
 
 - [joefitzgerald/packer-windows](https://github.com/joefitzgerald/packer-windows)
 - [mwrock/boxstarter](https://github.com/mwrock/boxstarter)
