@@ -7,6 +7,6 @@
 Vagrantfile
 
 # Only check in .example
+# versions of these files
 Autounattend.xml
-vbox-tools.ps1
 vmware-tools.ps1

@@ -113,16 +113,6 @@
                     <Description>Setup powershell and other mininum requirements</Description>
                     <Order>1</Order>
                 </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\7zip.ps1</CommandLine>
-                    <Description>Install 7zip</Description>
-                    <Order>2</Order>
-                </SynchronousCommand>
-                <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\vmware-tools.ps1</CommandLine>
-                    <Description>Install virtual machine guest tools</Description>
-                    <Order>3</Order>
-                </SynchronousCommand>
                 <!-- WITHOUT WINDOWS UPDATES
                 <SynchronousCommand wcm:action="add">
                     <CommandLine>cmd.exe /c a:\winrm.bat</CommandLine>

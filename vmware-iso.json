@@ -20,8 +20,6 @@
       "./Autounattend.xml",
       "./scripts/init.bat",
       "./scripts/winrm.bat",
-      "./scripts/7zip.ps1",
-      "./scripts/vmware-tools.ps1",
       "./scripts/win-updates.ps1"
     ],
     "vmdk_name": "windows_server_2012_r2",
@@ -33,5 +31,11 @@
       "scsi0.virtualDev": "lsisas1068"
     }
   }],
-  "provisioners": []
+  "provisioners": [{
+    "type": "windows-shell",
+    "scripts": [
+      "scripts/7zip.ps1",
+      "scripts/vmware-tools.ps1"
+    ]
+  }]
 }

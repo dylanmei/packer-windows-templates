@@ -13,6 +13,7 @@
     "shutdown_timeout": "1h",
     "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
     "guest_os_type": "Windows2012_64",
+    "guest_additions_mode": "disable",
     "disk_size": 12000,
     "format": "ova",
     "floppy_files": [
@@ -26,5 +27,11 @@
       [ "modifyvm", "{{.Name}}", "--cpus", "2" ]
     ]
   }],
-  "provisioners": []
+  "provisioners": [{
+    "type": "windows-shell",
+    "scripts": [
+      "scripts/chocolatey.ps1",
+      "scripts/vbox-tools.ps1"
+    ]
+  }]
 }
