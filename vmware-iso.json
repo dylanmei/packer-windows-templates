@@ -34,7 +34,17 @@
   "provisioners": [{
     "type": "windows-shell",
     "scripts": [
-      "scripts/7zip.ps1",
+      "scripts/chocolatey.ps1"
+    ]
+  }, {
+    "type": "windows-shell",
+    "inline": [
+      "choco install 7zip",
+      "choco install puppet"
+    ]
+  }, {
+    "type": "windows-shell",
+    "scripts": [
       "scripts/vmware-tools.ps1"
     ]
   }]
