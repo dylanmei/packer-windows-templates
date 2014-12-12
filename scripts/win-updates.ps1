@@ -4,13 +4,13 @@ param($global:RestartRequired=0,
         $MaxUpdatesPerCycle=500,
         $DoneScript='')
 
-$Logfile = "c:\Windows\Temp\win-updates.log"
+#$Logfile = "c:\Windows\Temp\win-updates.log"
 $Host.UI.RawUI.WindowTitle = "Run Windows Updates"
 
 function LogWrite {
    Param ([string]$logstring)
-   $now = Get-Date -format s
-   Add-Content $Logfile -value "$now $logstring"
+#   $now = Get-Date -format s
+#   Add-Content $Logfile -value "$now $logstring"
    Write-Host $logstring
 }
 
