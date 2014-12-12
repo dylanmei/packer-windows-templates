@@ -1,31 +1,28 @@
 {
   "builders": [{
-    "type": "vmware-windows-vmx",
-    "source_path": "output-vmware-windows-iso/windows_2012_r2.vmx",
+    "type": "virtualbox-windows-ovf",
+    "source_path": "output-virtualbox-windows-iso/windows_2012_r2.ova",
     "headless": true,
     "boot_wait": "1m",
     "winrm_username": "packer",
     "winrm_password": "packer",
     "winrm_wait_timeout": "10m",
+    "guest_additions_mode": "disable",
     "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
-    "vmx_data": {
-      "RemoteDisplay.vnc.enabled": "false",
-      "RemoteDisplay.vnc.port": "5900",
-      "memsize": "2048",
-      "numvcpus": "1",
-      "scsi0.virtualDev": "lsisas1068"
-    }
+    "vboxmanage": [
+      ["modifyvm", "{{.Name}}", "--memory", "2048"],
+      ["modifyvm", "{{.Name}}", "--cpus", "1"]
+    ]
   }],
   "provisioners": [{
     "type": "windows-shell",
     "scripts": [
-      "quirks.bat",
-      "rdp.bat",
-      "no-auto-login.bat"
+      "scripts/quirks.bat",
+      "scripts/rdp.bat"
     ]
   }, {
     "type": "windows-shell",
-    "inline": ["del /Q /S C:\Windows\Temp"]
+    "inline": ["del /Q /S C:\\Windows\\Temp"]
   }],
   "post-processors": [{
     "type": "vagrant",
