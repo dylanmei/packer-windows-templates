@@ -8,6 +8,6 @@ These are example templates to go with [packer-community/packer-windows-plugins]
 These examples borrow heavily from [this blog post](http://engineering.daptiv.com/building-a-windows-vagrant-base-box-with-packer/) and also these two fine repos:
 
 - [joefitzgerald/packer-windows](https://github.com/joefitzgerald/packer-windows)
-- [mwrock/boxstarter](https://github.com/mwrock/boxstarter)
+- [box-cutter/windows-vm](https://github.com/box-cutter/windows-vm)
 
 I expect any advances made here to get rolled into [joefitzgerald/packer-windows](https://github.com/joefitzgerald/packer-windows) when WinRM in [Packer](http://packer.io) is stable enough.
