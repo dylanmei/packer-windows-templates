@@ -19,7 +19,7 @@
       "Name": "Packer Builder (Windows 2012 R2)"
     },
     "tags": {
-      "Name": "Packer Builder (Windows 2012 R2)"
+      "Name": "Windows 2012 R2"
     }
   }],
   "provisioners": [{

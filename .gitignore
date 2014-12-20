@@ -4,7 +4,7 @@
 *.box
 
 /.vagrant
-Vagrantfile
+Vagrantfile*
 
 # Only check in .example
 # versions of these files
