@@ -1,0 +1,45 @@
+{
+  "builders": [{
+    "type": "amazon-windows-ebs",
+    "region": "{{ user `region` }}",
+    "source_ami": "{{ user `source_ami` }}",
+    "instance_type": "t2.medium",
+    "ami_name": "connect-win_2012_r2 {{ timestamp }}",
+    "user_data_file": "scripts/amz.userdata",
+    "winrm_username": "packer",
+    "winrm_password": "D@rj33l1n9",
+    "winrm_wait_timeout": "30m",
+    "winrm_port": 5985,
+    "access_key": "{{ user `access_key` }}",
+    "secret_key": "{{ user `secret_key` }}",
+    "vpc_id":	"{{ user `vpc_id` }}",
+    "subnet_id": "{{ user `subnet_id` }}",
+    "security_group_id": "{{ user `security_group` }}",
+    "run_tags": {
+      "Name": "Packer Builder (Windows 2012 R2)"
+    },
+    "tags": {
+      "Name": "Packer Builder (Windows 2012 R2)"
+    }
+  }],
+  "provisioners": [{
+    "type": "windows-shell",
+    "scripts": [
+      "scripts/chocolatey.ps1"
+    ]
+  }, {
+    "type": "windows-shell",
+    "inline": [
+      "choco install puppet"
+    ]
+  }],
+  "variables": {
+    "access_key": "",
+    "secret_key": "",
+    "source_ami": "",
+    "vpc_id": "",
+    "subnet_id": "" ,
+    "security_group": "" ,
+    "region": ""
+  }
+}

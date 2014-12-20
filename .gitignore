@@ -10,3 +10,4 @@ Vagrantfile
 # versions of these files
 Autounattend.xml
 vmware-tools.ps1
+amz-vars.json

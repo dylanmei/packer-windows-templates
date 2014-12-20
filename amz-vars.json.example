@@ -1,0 +1,7 @@
+{
+  "vpc_id": "vpc-fixme",
+  "subnet_id": "subnet-fixme",
+  "security_group": "sg-fixme",
+  "region": "us-west-2",
+  "source_ami": "ami-a13d6891"
+}

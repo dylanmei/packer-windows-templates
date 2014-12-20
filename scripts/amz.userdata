@@ -1,0 +1,37 @@
+<powershell>
+write-output "Running User Data Script"
+
+# Set TZ
+write-output "Setting TZ"
+cmd.exe /c tzutil /s \"Pacific Standard Time\"
+
+write-output "Setting up Packer user"
+cmd.exe /c net user /add packer D@rj33l1n9
+cmd.exe /c net localgroup administrators packer /add
+cmd.exe /c wmic useraccount where "name='packer'" set PasswordExpires=FALSE
+
+Set-ExecutionPolicy Unrestricted
+
+# RDP
+write-output "Setting up RDP"
+
+cmd.exe /c netsh advfirewall firewall add rule name="Open Port 3389" dir=in action=allow protocol=TCP localport=3389
+cmd.exe /c reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+
+# WinRM
+write-output "Setting up WinRM"
+
+&winrm quickconfig `-q
+&winrm set winrm/config '@{MaxTimeoutms="1800000"}'
+&winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="1024"}'
+&winrm set winrm/config/client/auth '@{Basic="true"}'
+&winrm set winrm/config/service/auth '@{Basic="true"}'
+&winrm set winrm/config/service '@{AllowUnencrypted="true"}'
+
+write-output "Setting up Firewall"
+
+cmd.exe /c netsh advfirewall firewall set rule group="remote administration" new enable=yes
+cmd.exe /c netsh firewall add portopening TCP 5985 "Port 5985"
+
+write-output "Fini"
+</powershell>
