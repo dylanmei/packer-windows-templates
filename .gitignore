@@ -2,6 +2,9 @@
 /output-*
 *.iso
 *.box
+*.raw
+*.img
+*.qcow2
 
 /.vagrant
 Vagrantfile*
