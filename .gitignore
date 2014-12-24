@@ -5,6 +5,8 @@
 *.raw
 *.img
 *.qcow2
+*.tar.gz
+*.tgz
 
 /.vagrant
 Vagrantfile*
