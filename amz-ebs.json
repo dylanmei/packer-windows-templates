@@ -4,7 +4,7 @@
     "region": "{{ user `region` }}",
     "source_ami": "{{ user `source_ami` }}",
     "instance_type": "t2.medium",
-    "ami_name": "connect-win_2012_r2 {{ timestamp }}",
+    "ami_name": "win-2012-r2 {{ timestamp }}",
     "user_data_file": "scripts/amz.userdata",
     "winrm_username": "packer",
     "winrm_password": "D@rj33l1n9",
@@ -15,6 +15,14 @@
     "vpc_id":	"{{ user `vpc_id` }}",
     "subnet_id": "{{ user `subnet_id` }}",
     "security_group_id": "{{ user `security_group` }}",
+    "ami_block_device_mappings": [{
+      "device_name": "/dev/sda1",
+      "delete_on_termination": true
+    }],
+    "launch_block_device_mappings": [{
+      "device_name": "/dev/sda1",
+      "delete_on_termination": true
+    }],
     "run_tags": {
       "Name": "Packer Builder (Windows 2012 R2)"
     },
