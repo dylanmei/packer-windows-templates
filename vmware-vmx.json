@@ -2,12 +2,13 @@
   "builders": [{
     "type": "vmware-windows-vmx",
     "source_path": "output-vmware-windows-iso/windows_2012_r2.vmx",
-    "headless": true,
+    "headless": false,
     "boot_wait": "1m",
     "winrm_username": "packer",
     "winrm_password": "packer",
     "winrm_wait_timeout": "10m",
     "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+    "tools_upload_flavor": "windows",
     "vmx_data": {
       "RemoteDisplay.vnc.enabled": "false",
       "RemoteDisplay.vnc.port": "5900",
@@ -19,13 +20,13 @@
   "provisioners": [{
     "type": "windows-shell",
     "scripts": [
-      "quirks.bat",
-      "rdp.bat",
-      "no-auto-login.bat"
+      "scripts/quirks.bat",
+      "scripts/rdp.bat",
+      "scripts/no-auto-login.bat"
     ]
   }, {
     "type": "windows-shell",
-    "inline": ["del /Q /S C:\Windows\Temp"]
+    "inline": ["del /Q /S C:/Windows/Temp"]
   }],
   "post-processors": [{
     "type": "vagrant",
