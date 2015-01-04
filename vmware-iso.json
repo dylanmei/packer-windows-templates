@@ -33,9 +33,7 @@
   }],
   "provisioners": [{
     "type": "windows-shell",
-    "scripts": [
-      "scripts/chocolatey.ps1"
-    ]
+    "scripts": ["scripts/chocolatey.ps1"]
   }, {
     "type": "windows-shell",
     "inline": [

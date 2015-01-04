@@ -2,7 +2,7 @@
   "builders": [{
     "type": "virtualbox-windows-ovf",
     "source_path": "output-virtualbox-windows-iso/windows_2012_r2.ova",
-    "headless": true,
+    "headless": false,
     "boot_wait": "1m",
     "winrm_username": "packer",
     "winrm_password": "packer",
@@ -18,11 +18,15 @@
     "type": "windows-shell",
     "scripts": [
       "scripts/quirks.bat",
-      "scripts/rdp.bat"
+      "scripts/rdp.bat",
+      "scripts/no-auto-login.bat"
     ]
   }, {
     "type": "windows-shell",
-    "inline": ["del /Q /S C:\\Windows\\Temp"]
+    "inline": [
+        "choco install vboxguestadditions.install",
+        "del /Q /S C:\\Windows\\Temp"
+    ]
   }],
   "post-processors": [{
     "type": "vagrant",
