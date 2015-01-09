@@ -38,7 +38,8 @@
   }, {
     "type": "windows-shell",
     "inline": [
-      "choco install puppet"
+      "choco install 7zip",
+      "choco install dotnet4.5.2"
     ]
   }],
   "variables": {
