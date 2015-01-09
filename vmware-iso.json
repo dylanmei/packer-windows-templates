@@ -13,7 +13,7 @@
     "shutdown_timeout": "1h",
     "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
     "guest_os_type": "windows8srv-64",
-    "disk_size": 18000,
+    "disk_size": 24000,
     "vnc_port_min": 5900,
     "vnc_port_max": 5980,
     "floppy_files": [
