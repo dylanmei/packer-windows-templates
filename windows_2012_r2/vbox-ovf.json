@@ -7,7 +7,7 @@
     "winrm_username": "packer",
     "winrm_password": "packer",
     "winrm_wait_timeout": "10m",
-    "guest_additions_mode": "disable",
+    "guest_additions_mode": "upload",
     "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
     "vboxmanage": [
       ["modifyvm", "{{.Name}}", "--memory", "2048"],
@@ -24,7 +24,6 @@
   }, {
     "type": "windows-shell",
     "inline": [
-        "choco install vboxguestadditions.install",
         "del /Q /S C:\\Windows\\Temp"
     ]
   }],
