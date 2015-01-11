@@ -24,7 +24,7 @@
     ],
     "vboxmanage": [
       [ "modifyvm", "{{.Name}}", "--memory", "2048" ],
-      [ "modifyvm", "{{.Name}}", "--cpus", "2" ]
+      [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
     ]
   }],
   "provisioners": [{
