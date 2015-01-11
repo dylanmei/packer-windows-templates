@@ -69,8 +69,8 @@
                     <WillShowUI>OnError</WillShowUI>
                 </ProductKey>
                 <AcceptEula>true</AcceptEula>
-                <FullName>Packer</FullName>
-                <Organization>Packer</Organization>
+                <FullName>Packer Administrator</FullName>
+                <Organization>Packer Community</Organization>
             </UserData>
         </component>
     </settings>

@@ -1,7 +1,7 @@
 {
   "builders": [{
     "type": "virtualbox-windows-ovf",
-    "source_path": "output-virtualbox-windows-iso/windows_2012_r2.ova",
+    "source_path": "ovf/windows_2008_r2.ova",
     "headless": false,
     "boot_wait": "1m",
     "winrm_username": "packer",
@@ -31,7 +31,7 @@
   "post-processors": [{
     "type": "vagrant",
     "keep_input_artifact": false,
-    "output": "windows_2012_r2_{{.Provider}}.box",
-    "vagrantfile_template": "vagrantfile.template"
+    "output": "windows_2008_r2_{{.Provider}}.box",
+    "vagrantfile_template": "windows_2008_r2/Vagrantfile.template"
   }]
 }

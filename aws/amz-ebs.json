@@ -5,7 +5,7 @@
     "source_ami": "{{ user `source_ami` }}",
     "instance_type": "t2.medium",
     "ami_name": "win-2012-r2 {{ timestamp }}",
-    "user_data_file": "scripts/amz.userdata",
+    "user_data_file": "aws/amz.userdata",
     "winrm_username": "packer",
     "winrm_password": "D@rj33l1n9",
     "winrm_wait_timeout": "30m",
@@ -33,7 +33,7 @@
   "provisioners": [{
     "type": "windows-shell",
     "scripts": [
-      "scripts/chocolatey.ps1"
+      "shell/chocolatey.ps1"
     ]
   }, {
     "type": "windows-shell",

@@ -28,6 +28,7 @@ write-output "Setting up WinRM"
 &winrm set winrm/config/service/auth '@{Basic="true"}'
 &winrm set winrm/config/service '@{AllowUnencrypted="true"}'
 
+# Firewall
 write-output "Setting up Firewall"
 
 cmd.exe /c netsh advfirewall firewall set rule group="remote administration" new enable=yes

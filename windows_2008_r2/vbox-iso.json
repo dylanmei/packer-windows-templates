@@ -1,10 +1,10 @@
 {
   "builders": [{
     "type": "virtualbox-windows-iso",
-    "vm_name": "windows_2012_r2",
-    "iso_url": "iso/en_windows_server_2012_r2_with_update_x64_dvd_4065220.iso",
+    "vm_name": "windows_2008_r2",
+    "iso_url": "iso/en_windows_server_2008_r2_with_sp1_x64_dvd_617601.iso",
     "iso_checksum_type": "md5",
-    "iso_checksum": "af6a7f966b4c4e31da5bc3cdc3afcbec",
+    "iso_checksum": "8dcde01d0da526100869e2457aafb7ca",
     "headless": false,
     "boot_wait": "2m",
     "winrm_username": "packer",
@@ -14,13 +14,13 @@
     "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
     "guest_os_type": "Windows2012_64",
     "guest_additions_mode": "disable",
-    "disk_size": 24000,
+    "disk_size": 61440,
     "format": "ova",
     "floppy_files": [
-      "./Autounattend.xml",
-      "./scripts/init.bat",
-      "./scripts/winrm.bat",
-      "./scripts/win-updates.ps1"
+      "windows_2008_r2/Autounattend.xml",
+      "scripts/init.bat",
+      "scripts/winrm.bat",
+      "scripts/win-updates.ps1"
     ],
     "vboxmanage": [
       [ "modifyvm", "{{.Name}}", "--memory", "2048" ],
@@ -33,8 +33,7 @@
   }, {
     "type": "windows-shell",
     "inline": [
-        "choco install 7zip",
-        "choco install puppet"
+        "choco install 7zip"
     ]
   }]
 }

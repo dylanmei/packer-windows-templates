@@ -1,5 +1,8 @@
-/packer_cache
-/output-*
+ovf/
+vmx/
+packer_cache/
+
+output-*
 *.iso
 *.box
 *.raw
@@ -8,8 +11,8 @@
 *.tar.gz
 *.tgz
 
-/.vagrant
-Vagrantfile*
+.vagrant
+Vagrantfile
 
 # Only check in .example
 # versions of these files

@@ -1,6 +1,6 @@
 {
   "builders": [{
-    "type": "vmware-windows-iso",
+    "type": "virtualbox-windows-iso",
     "vm_name": "windows_2012_r2",
     "iso_url": "iso/en_windows_server_2012_r2_with_update_x64_dvd_4065220.iso",
     "iso_checksum_type": "md5",
@@ -12,24 +12,20 @@
     "winrm_wait_timeout": "3h",
     "shutdown_timeout": "1h",
     "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
-    "guest_os_type": "windows8srv-64",
-    "disk_size": 24000,
-    "vnc_port_min": 5900,
-    "vnc_port_max": 5980,
+    "guest_os_type": "Windows2012_64",
+    "guest_additions_mode": "disable",
+    "disk_size": 61440,
+    "format": "ova",
     "floppy_files": [
-      "./Autounattend.xml",
-      "./scripts/init.bat",
-      "./scripts/winrm.bat",
-      "./scripts/win-updates.ps1"
+      "windows_2012_r2/Autounattend.xml",
+      "scripts/init.bat",
+      "scripts/winrm.bat",
+      "scripts/win-updates.ps1"
     ],
-    "vmdk_name": "windows_server_2012_r2",
-    "vmx_data": {
-      "RemoteDisplay.vnc.enabled": "false",
-      "RemoteDisplay.vnc.port": "5900",
-      "memsize": "2048",
-      "numvcpus": "1",
-      "scsi0.virtualDev": "lsisas1068"
-    }
+    "vboxmanage": [
+      [ "modifyvm", "{{.Name}}", "--memory", "2048" ],
+      [ "modifyvm", "{{.Name}}", "--cpus", "2" ]
+    ]
   }],
   "provisioners": [{
     "type": "windows-shell",
@@ -37,8 +33,7 @@
   }, {
     "type": "windows-shell",
     "inline": [
-      "choco install 7zip",
-      "choco install puppet"
+        "choco install 7zip"
     ]
   }]
 }

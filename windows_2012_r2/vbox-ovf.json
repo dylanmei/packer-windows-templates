@@ -1,0 +1,37 @@
+{
+  "builders": [{
+    "type": "virtualbox-windows-ovf",
+    "source_path": "ovf/windows_2012_r2.ova",
+    "headless": false,
+    "boot_wait": "1m",
+    "winrm_username": "packer",
+    "winrm_password": "packer",
+    "winrm_wait_timeout": "10m",
+    "guest_additions_mode": "disable",
+    "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+    "vboxmanage": [
+      ["modifyvm", "{{.Name}}", "--memory", "2048"],
+      ["modifyvm", "{{.Name}}", "--cpus", "1"]
+    ]
+  }],
+  "provisioners": [{
+    "type": "windows-shell",
+    "scripts": [
+      "scripts/quirks.bat",
+      "scripts/rdp.bat",
+      "scripts/no-auto-login.bat"
+    ]
+  }, {
+    "type": "windows-shell",
+    "inline": [
+        "choco install vboxguestadditions.install",
+        "del /Q /S C:\\Windows\\Temp"
+    ]
+  }],
+  "post-processors": [{
+    "type": "vagrant",
+    "keep_input_artifact": false,
+    "output": "windows_2012_r2_{{.Provider}}.box",
+    "vagrantfile_template": "windows_2012_r2/Vagrantfile.template"
+  }]
+}
