@@ -26,6 +26,7 @@ write-output "Setting up WinRM"
 &winrm set winrm/config/winrs '@{MaxMemoryPerShellMB="1024"}'
 &winrm set winrm/config/client/auth '@{Basic="true"}'
 &winrm set winrm/config/service/auth '@{Basic="true"}'
+&winrm set winrm/config/client '@{AllowUnencrypted="true"}'
 &winrm set winrm/config/service '@{AllowUnencrypted="true"}'
 
 # Firewall
