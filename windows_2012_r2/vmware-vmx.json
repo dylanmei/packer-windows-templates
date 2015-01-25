@@ -1,7 +1,7 @@
 {
   "builders": [{
     "type": "vmware-windows-vmx",
-    "source_path": "output-vmware-windows-iso/windows_2012_r2.vmx",
+    "source_path": "vmx/windows_2012_r2.vmx",
     "headless": false,
     "boot_wait": "1m",
     "winrm_username": "packer",
@@ -32,6 +32,6 @@
     "type": "vagrant",
     "keep_input_artifact": false,
     "output": "windows_2012_r2_{{.Provider}}.box",
-    "vagrantfile_template": "vagrantfile.template"
+    "vagrantfile_template": "windows_2012_r2/Vagrantfile.template"
   }]
 }
