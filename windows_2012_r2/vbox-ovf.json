@@ -21,11 +21,6 @@
       "scripts/rdp.bat",
       "scripts/no-auto-login.bat"
     ]
-  }, {
-    "type": "windows-shell",
-    "inline": [
-        "del /Q /S C:\\Windows\\Temp"
-    ]
   }],
   "post-processors": [{
     "type": "vagrant",
