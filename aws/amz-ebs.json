@@ -3,7 +3,7 @@
     "type": "amazon-windows-ebs",
     "region": "{{ user `region` }}",
     "source_ami": "{{ user `source_ami` }}",
-    "instance_type": "t2.medium",
+    "instance_type": "m3.medium",
     "ami_name": "win-2012-r2 {{ timestamp }}",
     "user_data_file": "aws/amz.userdata",
     "winrm_username": "packer",
