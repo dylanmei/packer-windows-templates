@@ -7,21 +7,25 @@
     "winrm_username": "packer",
     "winrm_password": "packer",
     "winrm_wait_timeout": "10m",
-    "guest_additions_mode": "upload",
-    "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
+    "guest_additions_mode": "disable",
+    "shutdown_timeout": "2h",
+    "shutdown_command": "shutdown /s /t 7200 /f /d p:4:1 /c \"Packer Shutdown\"",
     "vboxmanage": [
       ["modifyvm", "{{.Name}}", "--memory", "2048"],
       ["modifyvm", "{{.Name}}", "--cpus", "1"]
     ]
   }],
   "provisioners": [{
-    "type": "windows-shell",
-    "scripts": [
-      "scripts/quirks.bat",
-      "scripts/rdp.bat",
-      "scripts/no-auto-login.bat"
-    ]
-  }],
+    "type": "powershell",
+    "scripts": ["scripts/chocolatey.ps1"]
+  }, {
+    "type": "powershell",
+    "elevated_user": "packer",
+    "elevated_password": "packer",
+    "inline": [
+        "choco install dotnet4.5.2"
+    ]}
+  ],
   "post-processors": [{
     "type": "vagrant",
     "keep_input_artifact": false,
