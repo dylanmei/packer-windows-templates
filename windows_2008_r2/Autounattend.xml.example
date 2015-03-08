@@ -120,7 +120,7 @@
                 -->
                 <!-- WITH WINDOWS UPDATES -->
                <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\win-updates.ps1 -DoneScript a:\winrm.bat</CommandLine>
+                    <CommandLine>cmd.exe /c C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -File a:\win-updates.ps1 -MaxUpdatesPerCycle 30 -DoneScript a:\winrm.bat</CommandLine>
                     <Description>Run Windows Updates</Description>
                     <Order>99</Order>
                     <RequiresUserInput>true</RequiresUserInput>
