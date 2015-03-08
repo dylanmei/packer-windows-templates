@@ -28,10 +28,10 @@
     ]
   }],
   "provisioners": [{
-    "type": "windows-shell",
+    "type": "powershell",
     "scripts": ["scripts/chocolatey.ps1"]
   }, {
-    "type": "windows-shell",
+    "type": "powershell",
     "inline": [
         "choco install 7zip"
     ]
