@@ -17,13 +17,15 @@
   }],
   "provisioners": [{
     "type": "powershell",
+    "elevated_user": "packer",
+    "elevated_password": "packer",
     "scripts": ["scripts/chocolatey.ps1"]
   }, {
     "type": "powershell",
     "elevated_user": "packer",
     "elevated_password": "packer",
     "inline": [
-        "choco install dotnet4.5.2"
+        "choco install netfx-4.5.2-devpack"
     ]}
   ],
   "post-processors": [{
