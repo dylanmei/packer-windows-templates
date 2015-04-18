@@ -1,16 +1,21 @@
-ovf/
-vmx/
 packer_cache/
-
 output-*
+
 *.iso
-*.box
+*.ova
+*.nvram
+*.plist
+*.vmsd
+*.vmx
+*.vmxf
+*.vmdk
 *.raw
 *.img
 *.qcow2
 *.tar.gz
 *.tgz
 
+*.box
 .vagrant
 Vagrantfile
 
