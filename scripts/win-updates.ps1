@@ -127,7 +127,7 @@ function Install-WindowsUpdates() {
         LogWrite 'No updates available to install...'
         $global:MoreUpdates=0
         $global:RestartRequired=0
-        Invoke-Expression "$(DoneScript)"
+        Invoke-Expression "$($DoneScript)"
         break
     }
 
