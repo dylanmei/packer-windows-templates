@@ -26,14 +26,5 @@
       [ "modifyvm", "{{.Name}}", "--memory", "2048" ],
       [ "modifyvm", "{{.Name}}", "--cpus", "1" ]
     ]
-  }],
-  "provisioners": [{
-    "type": "powershell",
-    "scripts": ["scripts/chocolatey.ps1"]
-  }, {
-    "type": "powershell",
-    "inline": [
-        "choco install 7zip"
-    ]
   }]
 }

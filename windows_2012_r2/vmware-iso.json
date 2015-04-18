@@ -30,14 +30,5 @@
       "numvcpus": "1",
       "scsi0.virtualDev": "lsisas1068"
     }
-  }],
-  "provisioners": [{
-    "type": "windows-shell",
-    "scripts": ["scripts/chocolatey.ps1"]
-  }, {
-    "type": "windows-shell",
-    "inline": [
-      "choco install 7zip"
-    ]
   }]
 }
