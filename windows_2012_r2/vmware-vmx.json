@@ -19,8 +19,12 @@
   }],
   "provisioners": [{
     "type": "powershell",
+    "inline": ["iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))"]
+  }, {
+    "type": "powershell",
+    "elevated_user": "packer",		
+    "elevated_password": "packer",
     "inline": [
-      "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))",
       "choco install -y netfx-4.5.2-devpack"
     ]
   }],
