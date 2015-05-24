@@ -9,7 +9,7 @@
     "winrm_wait_timeout": "10m",
     "guest_additions_mode": "disable",
     "shutdown_timeout": "2h",
-    "shutdown_command": "shutdown /s /t 7200 /f /d p:4:1 /c \"Packer Shutdown\"",
+    "shutdown_command": "shutdown /s /t 10 /f /d p:4:1 /c \"Packer Shutdown\"",
     "vboxmanage": [
       ["modifyvm", "{{.Name}}", "--memory", "2048"],
       ["modifyvm", "{{.Name}}", "--cpus", "1"]
